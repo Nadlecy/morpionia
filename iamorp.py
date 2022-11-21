@@ -52,7 +52,7 @@ def aiProcess(tab,playerStart):
     else: 
         if tab[1][1]=="_  ":
             return [1,1]
-        elif tab[1][]
+        elif tab[1][1] ==
 
 g=[["_  ","_  ","_  "],["X  ","X  ","_  "],["_  ","_  ","X  "]]
 
