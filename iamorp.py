@@ -47,18 +47,51 @@ def aiProcess(tab,playerStart):
             comAns = [random.randint(0,2),random.randint(0,2)]
             if tab[comAns[0]][comAns[1]] == "_  ":
                 return comAns
-
     # si l'ordinateur joue en deuxième
     else: 
         if tab[1][1]=="_  ":
             return [1,1]
-        elif tab[1][1] ==
+        elif tab[1][1] == "X  ":
+            if tab[2][2] == "_  ":
+                return [2,2]
+            else:
+                # on a pas vraiment de stratégie à part bloquer quand l'adversaire joue au centre et bloquer se fait automatiquement au début de la fonction
+                while 1:
+                    # l'ordi va chercher une place au hasard jusqu'à en trouver une vide
+                    comAns = [random.randint(0,2),random.randint(0,2)]
+                    if tab[comAns[0]][comAns[1]] == "_  ":
+                        return comAns
+        # cette condition garantit que l'utilisateur ait au moins joué deux foix
+        elif tab[1][1] == "O  ":
+            if (tab[1][0] == "X  " and tab[1][2] == "X  "):
+                if tab[0][1] == "_  " and (tab[0][0]=="_  " or tab[0][0]=="O  ") and tab[0][2]=="_  ":
+                    if tab[0][0]=="_  ":
+                        return [0,0]
+                    elif tab[0][2]=="_  ":
+                        return [0,2]
+                elif tab[2][1] == "_  " and (tab[2][0]=="_  " or tab[2][0]=="O  ") and tab[2][2]=="_  ":
+                    if tab[2][0]=="_  ":
+                        return [2,0]
+                    elif tab[2][2]=="_  ":
+                        return [2,2]
+            elif (tab[0][1] == "X  " and tab[2][1] == "X  "):
+                if tab[1][0] == "_  " and (tab[0][0]=="_  " or tab[0][0]=="O  ") and tab[2][0]=="_  ":
+                    if tab[0][0]=="_  ":
+                        return [0,0]
+                    elif tab[2][0]=="_  ":
+                        return [2,0]
+                elif tab[1][2] == "_  " and (tab[0][2]=="_  " or tab[0][2]=="O  ") and tab[2][2]=="_  ":
+                    if tab[0][2]=="_  ":
+                        return [0,2]
+                    elif tab[2][2]=="_  ":
+                        return [2,2]
+
 
 g=[["_  ","_  ","_  "],["X  ","X  ","_  "],["_  ","_  ","X  "]]
 
-t=aiProcess(g)
+t=aiProcess(g,"n")
 g[t[0]][t[1]]="0  "
 print(g)
-t=aiProcess(g)
+t=aiProcess(g,"n")
 g[t[0]][t[1]]="0  "
 print(g)
